@@ -5,6 +5,7 @@ import {Sport} from '../../models/sport.model';
 export interface SportState extends EntityState<Sport> {
   selectedId: number;
   isLoading: boolean;
+  error: string;
 }
 
 export const sportEntityAdapter: EntityAdapter<Sport> = createEntityAdapter<Sport>({
@@ -13,5 +14,6 @@ export const sportEntityAdapter: EntityAdapter<Sport> = createEntityAdapter<Spor
 
 export const initialSportState: SportState = sportEntityAdapter.getInitialState({
   selectedId: null,
-  isLoading: false
+  isLoading: false,
+  error: null
 });
