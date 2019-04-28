@@ -26,3 +26,8 @@ export const getEntities = createSelector(
   getSportListState,
   state => state.entities
 );
+
+export const getError = createSelector(
+  getSportListState,
+  state => state.error
+);

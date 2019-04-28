@@ -21,16 +21,19 @@ describe('sportReducer', () => {
 
       expect(state.isLoading).toBeTruthy();
       expect(state.selectedId).toBeNull();
+      expect(state.error).toBeNull();
     });
   });
 
   describe('LoadSportListFailed', () => {
     it('should set isLoading to false and selectedId to null', () => {
-      const action = new SportListLoadFail({error: 'error message'});
+      const error = 'error message';
+      const action = new SportListLoadFail({error});
       const state = sportReducer({...initialSportState, isLoading: true}, action);
 
       expect(state.isLoading).toBeFalsy();
       expect(state.selectedId).toBeNull();
+      expect(state.error).toBe(error);
     });
   });
 
@@ -41,6 +44,7 @@ describe('sportReducer', () => {
 
       expect(state.isLoading).toBeFalsy();
       expect(state.selectedId).toBeNull();
+      expect(state.error).toBeNull();
       expect(state.ids.length).toBe(sportList.length);
     });
   });

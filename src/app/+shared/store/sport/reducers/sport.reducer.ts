@@ -7,15 +7,15 @@ export function sportReducer(
 ): SportState {
   switch (action.type) {
     case SportListActionsTypes.LoadSportList:
-      return {...state, selectedId: null, isLoading: true};
+      return {...state, selectedId: null, isLoading: true, error: null};
     case SportListActionsTypes.LoadSportListFailed:
-      return {...state, selectedId: null, isLoading: false};
+      return {...state, selectedId: null, isLoading: false, error: action.payload.error};
     case SportListActionsTypes.LoadSportListCompleted:
-      return sportEntityAdapter.addAll(action.payload.sports,
-        {
+      return sportEntityAdapter.addAll(action.payload.sports, {
           ...state,
           selectedId: null,
-          isLoading: false
+          isLoading: false,
+          error: null
         }
       );
     default:
